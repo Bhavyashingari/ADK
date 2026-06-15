@@ -14,6 +14,11 @@ from pydantic import BaseModel, Field
 class Output(BaseModel):
     response: str = Field(..., description="The response from the agent.")
 
+connection = SseConnectionParams(
+    url="https://mcp-server.example.com",
+    headers={"Authorization": "Bearer <token>"},
+)
+
 MODEL = "gemini-3.1-flash"
 mcp_toolset = McpToolset(
     connection_params=StdioConnectionParams(
@@ -25,10 +30,7 @@ mcp_toolset = McpToolset(
     )
 )
 
-connection_params = SseConnectionParams(
-    url="https://mcp-server.example.com",
-    headers={"Authorization": "Bearer <token>"},
-)
+
 
 safety_config = types.SafetyConfig(
     content_filter=types.ContentFilterConfig(
@@ -52,7 +54,7 @@ greet_agent = Agent(
     ),
     output_schema=Output,
     model=MODEL,
-    tools=[google_search_tool],
+    tools=[google_search_tool, mcp_toolset],
     code_executor=BuiltInCodeExecutor(),
     output_key="topic"
 )
