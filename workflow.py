@@ -172,4 +172,3 @@ class DeepResearchWorkflow(Workflow):
             ctx.write_event_to_stream(ProgressEvent(msg="Report requires review, generating new questions."))
             return FeedbackEvent(feedback=str(answer))
         
-
