@@ -5,11 +5,15 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "boto3>=1.43.36",
     "google-adk>=1.18.0",
+    "gspread>=6.2.1",
+    "instructor>=1.15.3",
     "llama-index>=0.14.22",
     "llama-index-llms-azure-openai>=0.5.5",
     "mcp>=1.27.2",
     "pydantic>=2.13.4",
     "python-multipart>=0.0.20",
+    "slack-sdk>=3.42.0",
     "tavily>=1.1.0",
 ]
